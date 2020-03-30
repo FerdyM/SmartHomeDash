@@ -69,6 +69,19 @@
       align-self: center;
 }
 
+.main .lights .lavaLamp {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
 .main .navigation {
   -ms-grid-column: 3;
   -ms-grid-column-span: 1;
