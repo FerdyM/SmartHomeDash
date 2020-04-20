@@ -24,23 +24,11 @@
             margin: 0;
             padding-top: 20px;
         }
-        .saltLampLightSwitch {
-            grid-column: 1/2;
-            grid-row: 2/3;
-            justify-self: start;
-            align-self: start;
-        }
         .rgbSaltLampLightSwitch {
             grid-column: 1/2;
             grid-row: 2/3;
             justify-self: start;
-            align-self: center;
-        }
-        .lavaLamp {
-            grid-column: 1/2;
-            grid-row: 2/3;;
-            justify-self: start;
-            align-self: flex-end;
+            align-self: start;
         }
     }
 

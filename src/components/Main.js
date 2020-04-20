@@ -1,97 +1,74 @@
 import React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import Link from '@material-ui/core/Link';
+import Slider from '@material-ui/core/Slider'
 // import { SketchPicker } from 'react-color'
 import './Main.css';
 
-const fakeAPIcall = () => {
-    fetch('http://localhost:8080/lights/lavalamp1', requestOptions)
-    console.log('this will trigger a lamp by calling the express backend');
-}
-
-const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ switch: 'off' })
-};
-
-
 const Main = () => {
-    
-
     return (
         <div className="main">
-            <LightSwitches />
-            <NavigationPane /> 
+            <LightSwitches/>
         </div>
     );
 }
+
+
 const LightSwitches = () => {
     return (
         <div className="lights">
             <h2>Lights</h2>
             <FormControlLabel 
-                className="saltLampLightSwitch"
-                control= {
-                    <Switch 
-                        color="primary" 
-                        onChange={fakeAPIcall()}
-                    />
-                }    
-                label="Salt Lamp"
-            />
-            <FormControlLabel 
                 className="rgbSaltLampLightSwitch"
                 control= {
                     <Switch 
                         color="primary" 
-                        onChange={fakeAPIcall()}
                     />
                 }    
                 label="RGB Salt Lamp"
             />
-            <FormControlLabel 
-                className="lavaLamp"
-                control= {
-                    <Switch 
-                        color="primary" 
-                        onChange={fakeAPIcall()}
-                    />
-                }    
-                label="Lava Lamp"
-            />
-            {/* <SketchPicker /> */}
+            <ContinuousSlider />
+            <button onClick={LampRed}>Hello World</button>
         </div> 
     )
 }
 
+const LampRed = () => {
+    fetch('http://localhost:8080/lights/saltlamp/color', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({})
+  });
+  console.log('request sent')
+}
+const HelloWorld = (value) => {
+    fetch('http://localhost:8080/lights/saltlamp/brightness', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({goonk: value.toString()})
+  });
+  console.log('request sent')
+}
+function ContinuousSlider() {
+    const [value, setValue] = React.useState(30);
+  
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    //   console.log(event)
+      HelloWorld(newValue)
+    };
 
-const NavigationPane = () => {
     return (
-        <div className="navigation">
-            <h2>Smart Home Hub</h2>
-            <Link 
-                href="127.0.0.1:5000"
-                target="_blank"
-                className="dash-link"
-            >
-                OctoPrint
-            </Link>  
-            <Link 
-                href="10.0.0.230:1880/ui"
-                className="dash-link"
-            >
-                Node-red Dashboard
-            </Link> 
-            <Link 
-                href="10.0.0.230:5000/admin"
-                className="dash-link"
-            >
-                Pi-hole Dashboard
-            </Link> 
-        </div>
+        <Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
     )
 }
+
+
 
 export default Main;
