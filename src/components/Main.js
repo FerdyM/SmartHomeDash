@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import Typography from '@material-ui/core/Typography'
 import Slider from '@material-ui/core/Slider'
+import Button from '@material-ui/core/Button'
 import { ChromePicker } from 'react-color'
-// import { SketchPicker } from 'react-color'
 import './Main.css';
 
 const Main = () => {
     return (
         <div className="main">
-            <LightSwitches/>
+            <RGBSaltLamp/>
+            <SaltLamp />
         </div>
     );
 }
@@ -19,9 +21,9 @@ function ColorPicker () {
 
   return (
     <div>
-      <button onClick={() => setShowColorPicker(showColorPicker => !showColorPicker)}>
+      <Button variant="contained" color="primary" onClick={() => setShowColorPicker(showColorPicker => !showColorPicker)}>
         {showColorPicker ? 'Close Color Picker' : 'Pick A Color'}
-      </button>
+      </Button>
       {showColorPicker && (
         <ChromePicker color={color} onChange={updatedColor => HandleColorChange(updatedColor.hex)}/>
       )}
@@ -34,23 +36,42 @@ function ColorPicker () {
     setColor(updatedColor);
   }
 }
-
-
-const LightSwitches = () => {
-    return (
-        <div className="lights">
-            <h2>Lights</h2>
+const SaltLamp = () => {
+  return (
+    <div className="light">
+            <h2>Salt Lamp</h2>
             <FormControlLabel 
                 className="rgbSaltLampLightSwitch"
                 control= {
                     <Switch 
                         color="primary" 
+                        
                     />
                 }    
-                label="RGB Salt Lamp"
+                label="On / Off"
             />
+        </div> 
+  )
+}
+
+const RGBSaltLamp = () => {
+    return (
+        <div className="light2">
+            <h2>RGB Salt Lamp</h2>
             <ContinuousSlider />
             <ColorPicker />
+            <FormControlLabel 
+                // className="rgbSaltLampLightSwitch"
+                control= {
+                    <Switch 
+                        color="primary" 
+                        
+                    />
+                }    
+                label="On / Off"
+            />
+            
+            
         </div> 
     )
 }
