@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Slider from '@material-ui/core/Slider'
+import { ChromePicker } from 'react-color'
 // import { SketchPicker } from 'react-color'
 import './Main.css';
 
@@ -11,6 +12,20 @@ const Main = () => {
             <LightSwitches/>
         </div>
     );
+}
+function ColorPicker () {
+  const [color, setColor] = useState('#fff')
+  return (
+    <div>
+      <ChromePicker color={color} onChange={updatedColor => HandleColorChange(updatedColor)}/>
+    </div>
+  )
+
+  function HandleColorChange(updatedColor) {
+    console.log(updatedColor.hex);
+    HelloWorld(updatedColor.hex);
+    setColor(updatedColor);
+  }
 }
 
 
@@ -29,6 +44,7 @@ const LightSwitches = () => {
             />
             <ContinuousSlider />
             <button onClick={LampRed}>Hello World</button>
+            <ColorPicker />
         </div> 
     )
 }
@@ -61,11 +77,12 @@ function ContinuousSlider() {
     const handleChange = (event, newValue) => {
       setValue(newValue);
     //   console.log(event)
+      console.log(newValue)
       HelloWorld(newValue)
     };
 
     return (
-        <Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
+        <Slider value={value} onChange={handleChange} max={255} min={1} aria-labelledby="continuous-slider" />
     )
 }
 
