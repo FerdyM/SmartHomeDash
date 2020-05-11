@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Switch, Card } from '@material-ui/core';
-import { RGBSaltLamp, HandleLampColorChange} from './RGBSaltLamp'
+import RGBLight from './RGBLight'
 import './stylesheets/Main.css'
 
 const Main = () => {
     return (
         <div className="main">
-            <RGBSaltLamp/>
+            <RGBLight lightName="saltlamp"/>
             <SaltLamp />
+            <RGBLight lightName="RGBsaltlamp"/>
         </div>
     );
 }
