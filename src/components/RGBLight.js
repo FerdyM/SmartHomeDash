@@ -37,8 +37,6 @@ class RGBLight extends Component {
       })
     }
 
-    
-
     render() {
         return (
           <Card className="card">
