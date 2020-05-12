@@ -4,7 +4,7 @@ import { Card, Slider, Switch, FormControlLabel} from '@material-ui/core';
 import axios from 'axios'
 
 let api = axios.create({
-  baseURL: process.env.SERVER,
+  baseURL: 'http://localhost:8081',
   headers: {
     'Content-Type': 'application/json'
    },
@@ -13,6 +13,8 @@ let api = axios.create({
 class RGBLight extends Component {
     constructor(props) {
       super(props)
+
+      this.HandleLampColorChange = this.HandleLampColorChange.bind(this)
     }
 
     HandleLampColorChange(color) {
@@ -27,7 +29,7 @@ class RGBLight extends Component {
     }
 
     HandleBrightnessChange(value) {
-      api.post("/lights/" + this.props.lightName + "/brightness" , JSON.stringify({goonk: value.toString()}))
+      api.post("/lights/" + this.props.lightName + "/brightness" , JSON.stringify({brightness: value.toString()}))
         .then(res => {
           console.log(`${this.props.lightName} brightness changed to: ${value}`)
         })

@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Switch, Card } from '@material-ui/core';
+import React from 'react';
+import { Switch, Card, FormControlLabel} from '@material-ui/core';
+import Icon from '@material-ui/core/Icon'
 import RGBLight from './RGBLight'
 import './stylesheets/Main.css'
 
@@ -10,6 +10,7 @@ const Main = () => {
             <RGBLight lightName="saltlamp"/>
             <SaltLamp />
             <RGBLight lightName="RGBsaltlamp"/>
+            <Icon className="add-icon" color="primary" style={{fontSize: 60}}>add_circle</Icon>
         </div>
     );
 }
