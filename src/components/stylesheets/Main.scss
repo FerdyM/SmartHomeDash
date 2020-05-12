@@ -25,6 +25,12 @@
     .saltlamp {
         min-height: 150px;
     }
+    .add-icon {
+        position: fixed;
+        margin: 20px;
+        bottom: 0;
+        right: 0;
+    }
 }
 
 @media only screen and (min-width: 600px) {
