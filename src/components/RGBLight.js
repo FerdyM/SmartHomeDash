@@ -15,6 +15,7 @@ class RGBLight extends Component {
       super(props)
 
       this.HandleLampColorChange = this.HandleLampColorChange.bind(this)
+      this.HandleBrightnessChange = this.HandleBrightnessChange.bind(this)
     }
 
     HandleLampColorChange(color) {
@@ -63,12 +64,13 @@ class RGBLight extends Component {
 
 
 
-const ContinuousSlider = () => {
+const ContinuousSlider = (props) => {
     const [value, setValue] = useState(255);
+    
     const handleChange = (event, newValue) => {
       setValue(newValue);
       console.log(newValue)
-      this.HandleBrightnessChange(newValue)
+      props.HandleBrightnessChange(newValue)
     };
 
     return (
