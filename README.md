@@ -4,7 +4,7 @@ This is a modular custom dashboard designed to help you easily monitor and contr
 
 I am intending to continue to grow and add to this project both as I become better at development and as I delve farther into the world of IoT and create more devices.
 
-![Screenshot of SmartHomeDash](https://github.com/FerdyM/SmartHomeDash/blob/master/docs/images/SmartHomeDash.png)
+![Screenshot of SmartHomeDash](https://github.com/FerdyM/SmartHomeDash/blob/master/docs/images/SmartHomeDash.gif)
 
 ## Features
 
